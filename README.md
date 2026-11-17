@@ -528,3 +528,44 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
+
+
+---
+
+# Owned checkout guide
+
+## Purpose and status
+
+This owned reference fork preserves the GitHub Awesome Copilot README, contributor attribution and upstream links. It catalogs reusable Copilot resources and includes a documentation website; it does not demonstrate that resources are installed or that an owner website is deployed.
+
+## Repository map
+
+[`agents/`](agents/), [`instructions/`](instructions/), [`skills/`](skills/), [`hooks/`](hooks/), [`workflows/`](workflows/) and [`plugins/`](plugins/) hold different resource types. [`eng/`](eng/) implements generators and validators; [`docs/`](docs/) holds catalogs; [`website/`](website/) is a separate Astro/Starlight site. [`AGENTS.md`](AGENTS.md) defines authoring conventions.
+
+## Architecture and integrations
+
+Resources are consumed by their supported agent/IDE environments. The root Node scripts generate catalogs and marketplace metadata; the website consumes generated data. The README generator can fetch MCP registry data and updates the main README’s featured-plugin section as well as category documents. Hooks and workflows can execute actions when installed.
+
+## Setup and environments
+
+The root [package manifest](package.json) and website [manifest](website/package.json) define separate Node dependency sets and scripts. Upstream contribution instructions describe installation and generation; those steps were not performed for this README-only change. Confirm compatible runtimes and selected resource permissions before any separately approved setup.
+
+## Safe commands
+
+For documentation review, use local, read-only Git inspection: `git status --short`, `git ls-files`, `git diff -- README.md`, and `git diff --check`. Inspect scripts as text before considering execution. Installation, build, test, authentication and publication commands shown in the upstream documentation are outside this README-only review. `npm run build` generates documentation and marketplace data; `npm start` runs that build. Website development/build scripts also generate data, and website build invokes the root build. These commands are not read-only Markdown checks.
+
+## Testing and validation
+
+Upstream guidance calls for plugin/skill validators, generation, line-ending normalization and host validation. Those scripts were deliberately not executed under the documentation-only constraint. This guide was checked statically for structure, added paths, whitespace and original-content preservation; no Copilot resource or website behavior was tested.
+
+## Deployment and rollback
+
+No owner website deployment or hosting configuration has been verified. Website builds and upstream workflows are separate from this local draft. Preserve this owned-checkout guide when later regenerating documentation. Upstream contribution guidance targets the staged branch; this local owned-fork draft is not an upstream submission. A documentation revert does not uninstall hooks or reverse workflow actions.
+
+## Risks and guardrails
+
+Keep [license](LICENSE), trademark and contributor notices intact. Review resource-specific permissions, secrets access and external tool dependencies before activation. Generators can modify multiple files and access the network; do not run them as part of a README-only review. Existing upstream links, badges and claims remain unverified.
+
+## Related documentation
+
+Use [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md), [docs](docs/), [engineering scripts](eng/) and [website](website/) alongside the preserved upstream catalog.
